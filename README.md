@@ -102,14 +102,16 @@ tp-microservicios-ai/
 
 **Requisitos:** Java 17, Maven 3.9+, acceso a internet (Config Server clona el repo de GitHub en el arranque).
 
-Compilar los cuatro proyectos:
+Compilar los cuatro proyectos (con los tests unitarios de `product-service` y `customer-service`):
 
 ```bash
 cd config-server    ; mvn -DskipTests package ; cd ..
 cd eureka-server    ; mvn -DskipTests package ; cd ..
-cd product-service  ; mvn -DskipTests package ; cd ..
-cd customer-service ; mvn -DskipTests package ; cd ..
+cd product-service  ; mvn package ; cd ..
+cd customer-service ; mvn package ; cd ..
 ```
+
+> Para saltar los tests durante iteración rápida, agregar `-DskipTests` a los dos últimos comandos.
 
 Arrancar **en este orden** (cada uno en su terminal):
 

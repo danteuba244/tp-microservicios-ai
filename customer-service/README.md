@@ -165,6 +165,7 @@ CustomerController
 | `CustomerNotFoundException`        | 404    | Cliente inexistente                                    |
 | `MethodArgumentNotValidException`  | 400    | Validación de DTO falla (`details` con la lista)       |
 | **`FeignException`**               | **502**| **product-service caído o respondió error** → `Bad Gateway` con `feignStatus=...` en `details` |
+| **`DataIntegrityViolationException`** | **409** | **Restricción UNIQUE violada (email o dni duplicado)** → `Conflict` con la causa raíz en `details` |
 | `Exception` (generic)              | 500    | Fallback                                               |
 
 Todos usan el record `ErrorResponse(timestamp, status, error, message, path, details)`.
@@ -182,7 +183,7 @@ com.tp.customerservice
 ├── service.CustomerService            # @Service (@Transactional) — orquesta Feign
 ├── repository.CustomerRepository      # JpaRepository<Customer, Long>
 ├── mapper.CustomerMapper              # @Component  Entity <-> DTO
-├── model.Customer                     # @Entity
+├── entity.Customer                     # @Entity
 ├── client.ProductClient               # @FeignClient(name = "product-service")
 ├── dto.{CustomerRequestDTO, CustomerResponseDTO, ProductDTO, CustomerWithProductsDTO}
 └── exception.{CustomerNotFoundException, ErrorResponse, GlobalExceptionHandler}
@@ -201,7 +202,21 @@ java -jar target/customer-service-1.0.0.jar
 
 ---
 
-## 10. Extras
+## 10. Tests
+
+- **Unitarios** (`src/test/java`): `CustomerServiceTest` (Mockito, 8 tests, incluyendo mock de `ProductClient` para el agregador Feign), `CustomerMapperTest` (3 tests) y `CustomerControllerTest` (`@WebMvcTest`, 5 tests cubriendo 200/201/400/404/409).
+- El caso `409` verifica que el handler de `DataIntegrityViolationException` convierte email/DNI duplicado en `HTTP 409 Conflict`.
+- Ejecutar solo los tests del modulo:
+
+  ```bash
+  mvn test
+  ```
+
+- El `application.yml` de test desactiva `config-server` y `eureka` para permitir aislar el web slice sin infraestructura.
+
+---
+
+## 11. Extras
 
 - **H2 Console:** `http://localhost:8081/h2-console` con JDBC URL `jdbc:h2:mem:customerdb`, user `SA`, sin password.
 - Los datos se **pierden en cada arranque** (H2 in-memory).

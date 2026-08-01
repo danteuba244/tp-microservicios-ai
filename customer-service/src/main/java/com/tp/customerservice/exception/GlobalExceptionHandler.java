@@ -1,6 +1,7 @@
 package com.tp.customerservice.exception;
 
 import feign.FeignException;
+import org.springframework.dao.DataIntegrityViolationException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,14 @@ public class GlobalExceptionHandler {
                 "Error al comunicarse con product-service: " + ex.getMessage(),
                 req,
                 List.of("feignStatus=" + ex.status()));
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorResponse> handleDataIntegrity(DataIntegrityViolationException ex, HttpServletRequest req) {
+        String rootMsg = ex.getMostSpecificCause() != null ? ex.getMostSpecificCause().getMessage() : ex.getMessage();
+        String detalle = "Violacion de restriccion de integridad (posible email o dni duplicado)";
+        List<String> details = rootMsg != null ? List.of(rootMsg) : null;
+        return build(HttpStatus.CONFLICT, detalle, req, details);
     }
 
     @ExceptionHandler(Exception.class)

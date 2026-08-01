@@ -147,8 +147,8 @@ com.tp.productservice
 ├── service.ProductService            # @Service (@Transactional)
 ├── repository.ProductRepository      # JpaRepository<Product, Long> + findByCustomerId
 ├── mapper.ProductMapper              # @Component  Entity <-> DTO
-├── model.Product                     # @Entity
-├── model.Categoria                   # enum
+├── entity.Product                     # @Entity
+├── entity.Categoria                   # enum
 ├── dto.ProductRequestDTO             # record + @Valid
 ├── dto.ProductResponseDTO            # record
 └── exception.{ProductNotFoundException, ErrorResponse, GlobalExceptionHandler}
@@ -169,7 +169,20 @@ Al segundo intento hay que borrar el registro previo en Eureka o esperar 90s (ev
 
 ---
 
-## 9. Extras
+## 9. Tests
+
+- **Unitarios** (`src/test/java`): `ProductServiceTest` (Mockito, 9 tests), `ProductMapperTest` (3 tests) y `ProductControllerTest` (`@WebMvcTest`, 7 tests cubriendo 200/201/204/400/404).
+- Ejecutar solo los tests del modulo:
+
+  ```bash
+  mvn test
+  ```
+
+- El `application.yml` de test desactiva `config-server` y `eureka`, de modo que los tests corren sin infraestructura levantada.
+
+---
+
+## 10. Extras
 
 - **H2 Console:** `http://localhost:8082/h2-console` con JDBC URL `jdbc:h2:mem:productdb`, user `SA`, sin password.
 - Los datos se **pierden en cada arranque** (H2 in-memory).
