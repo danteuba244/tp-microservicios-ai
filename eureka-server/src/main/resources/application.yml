@@ -1,0 +1,9 @@
+# application.yml LOCAL de eureka-server.
+# Solo declara el nombre y de donde traer el resto de la config (Config Server).
+# El puerto y la desactivacion de register-with-eureka viven en config/eureka-server.yml.
+
+spring:
+  application:
+    name: eureka-server
+  config:
+    import: "configserver:http://localhost:8888"
