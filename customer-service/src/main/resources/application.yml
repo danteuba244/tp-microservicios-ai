@@ -1,0 +1,8 @@
+# application.yml LOCAL de customer-service.
+# El resto de la config (puerto, JPA, Eureka client) viene de config/customer-service.yml.
+
+spring:
+  application:
+    name: customer-service
+  config:
+    import: "configserver:http://localhost:8888"
