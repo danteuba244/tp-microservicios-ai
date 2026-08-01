@@ -1,6 +1,6 @@
 package com.tp.productservice.repository;
 
-import com.tp.productservice.model.Product;
+import com.tp.productservice.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

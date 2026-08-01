@@ -7,7 +7,7 @@ import com.tp.customerservice.dto.CustomerWithProductsDTO;
 import com.tp.customerservice.dto.ProductDTO;
 import com.tp.customerservice.exception.CustomerNotFoundException;
 import com.tp.customerservice.mapper.CustomerMapper;
-import com.tp.customerservice.model.Customer;
+import com.tp.customerservice.entity.Customer;
 import com.tp.customerservice.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
