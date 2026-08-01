@@ -4,7 +4,7 @@ import com.tp.productservice.dto.ProductRequestDTO;
 import com.tp.productservice.dto.ProductResponseDTO;
 import com.tp.productservice.exception.ProductNotFoundException;
 import com.tp.productservice.mapper.ProductMapper;
-import com.tp.productservice.model.Product;
+import com.tp.productservice.entity.Product;
 import com.tp.productservice.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

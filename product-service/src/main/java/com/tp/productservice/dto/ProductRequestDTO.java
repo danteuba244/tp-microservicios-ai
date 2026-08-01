@@ -1,6 +1,6 @@
 package com.tp.productservice.dto;
 
-import com.tp.productservice.model.Categoria;
+import com.tp.productservice.entity.Categoria;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

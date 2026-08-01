@@ -1,4 +1,4 @@
-package com.tp.productservice.model;
+package com.tp.productservice.entity;
 
 public enum Categoria {
     INSTRUMENTO,

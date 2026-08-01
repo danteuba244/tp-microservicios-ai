@@ -2,7 +2,7 @@ package com.tp.customerservice.mapper;
 
 import com.tp.customerservice.dto.CustomerRequestDTO;
 import com.tp.customerservice.dto.CustomerResponseDTO;
-import com.tp.customerservice.model.Customer;
+import com.tp.customerservice.entity.Customer;
 import org.springframework.stereotype.Component;
 
 @Component

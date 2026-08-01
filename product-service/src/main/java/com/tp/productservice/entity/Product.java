@@ -1,4 +1,4 @@
-package com.tp.productservice.model;
+package com.tp.productservice.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

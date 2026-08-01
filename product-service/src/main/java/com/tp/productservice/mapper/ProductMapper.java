@@ -2,7 +2,7 @@ package com.tp.productservice.mapper;
 
 import com.tp.productservice.dto.ProductRequestDTO;
 import com.tp.productservice.dto.ProductResponseDTO;
-import com.tp.productservice.model.Product;
+import com.tp.productservice.entity.Product;
 import org.springframework.stereotype.Component;
 
 @Component

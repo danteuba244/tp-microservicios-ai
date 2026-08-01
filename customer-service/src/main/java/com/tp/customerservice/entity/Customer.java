@@ -1,4 +1,4 @@
-package com.tp.customerservice.model;
+package com.tp.customerservice.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
