@@ -1,0 +1,15 @@
+# Configuracion COMUN a todos los servicios (application.yml en el config-repo)
+# Cada servicio la recibe automaticamente ademas de su <spring.application.name>.yml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
