@@ -1,0 +1,9 @@
+# application.yml LOCAL de product-service.
+# Solo declara el nombre logico y donde traer el resto (Config Server).
+# Todo lo demas (puerto, JPA, Eureka client) vive en config/product-service.yml.
+
+spring:
+  application:
+    name: product-service
+  config:
+    import: "configserver:http://localhost:8888"
